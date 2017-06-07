@@ -1,0 +1,51 @@
+{#
+/**
+ * @file
+ * Display Suite 2 column template.
+ *
+ * Available variables:
+ * - outer_wrapper: outer wrapper element
+ * - left_wrapper: wrapper element around left region
+ * - right_wrapper: wrapper element around right region
+ * - attributes: layout attributes
+ * - left_attributes: attributes for left region
+ * - right_attributes: attributes for right region
+ * - left: content of left region
+ * - right: content of right region
+ */
+#}
+<{{ outer_wrapper }}{{ attributes.addClass('layout--onecol', 'clearfix') }}>
+  {{ title_suffix.contextual_links }}
+
+  <div class="inner">
+
+    {% if not header_empty %}
+      {% if hide_page_title %}
+        {% set header_without_title = header|without('node_title') %}
+        {% if header_without_title is not empty %}
+          <{{ header_wrapper }}{{ header_attributes.addClass('ds-header', 'no-title') }}>
+              {{ header_without_title }}
+          </{{ header_wrapper }}>
+        {% endif %}
+      {% else %}
+        <{{ header_wrapper }}{{ header_attributes.addClass('ds-header') }}>
+          {{ header }}
+        </{{ header_wrapper }}>
+      {% endif %}
+    {% endif %}
+
+    {% if not column_1_empty %}
+    <{{ column_1_wrapper }}{{ column_1_attributes.addClass('ds-content') }}>
+      {{ column_1 }}
+    </{{ column_1_wrapper }}>
+    {% endif %}
+
+    {% if not footer_empty %}
+    <{{ footer_wrapper }}{{ footer_attributes.addClass('ds-footer') }}>
+      {{ footer }}
+    </{{ footer_wrapper }}>
+    {% endif %}
+
+  </div>
+
+</{{ outer_wrapper }}>

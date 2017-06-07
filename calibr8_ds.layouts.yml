@@ -1,0 +1,72 @@
+reset:
+  label    : Reset
+  category : Calibr8
+  class: '\Drupal\ds\Plugin\DsLayout'
+  type: partial
+  template : ds_layouts/reset/reset
+  icon     : ds_layouts/reset/reset.png
+  regions:
+    column_1:
+      label: Center
+onecol:
+  label    : Columns: 1
+  category : Calibr8
+  class: '\Drupal\ds\Plugin\DsLayout'
+  type: partial
+  template : ds_layouts/onecol/onecol
+  icon     : ds_layouts/onecol/onecol.png
+  regions:
+    header:
+      label: Header
+    column_1:
+      label: Center
+    footer:
+      label: Footer
+onecol_image:
+  label    : Columns: 1 with image
+  category : Calibr8
+  class: '\Drupal\ds\Plugin\DsLayout'
+  type: partial
+  template : ds_layouts/onecol_image/onecol_image
+  icon     : ds_layouts/onecol_image/onecol_image.png
+  regions:
+    image:
+      label: Image
+    header:
+      label: Header
+    column_1:
+      label: Center
+    footer:
+      label: Footer
+twocol:
+  label    : Columns: 2
+  category : Calibr8
+  class: '\Drupal\ds\Plugin\DsLayout'
+  type: partial
+  template : ds_layouts/twocol/twocol
+  icon     : ds_layouts/twocol/twocol.png
+  regions:
+    header:
+      label: Header
+    column_1:
+      label: Left
+    column_2:
+      label: Right
+    footer:
+      label: Footer
+twocol_reverse:
+  label    : Columns: 2 reverse
+  category : Calibr8
+  class: '\Drupal\ds\Plugin\DsLayout'
+  type: partial
+  template : ds_layouts/twocol_reverse/twocol_reverse
+  icon     : ds_layouts/twocol_reverse/twocol_reverse.png
+  regions:
+    header:
+      label: Header
+    column_1:
+      label: Left
+    column_2:
+      label: Right
+    footer:
+      label: Footer

@@ -1,0 +1,40 @@
+<?php
+
+/**
+ * Implements hook_ds_pre_render_alter().
+ */
+function calibr8_ds_ds_pre_render_alter(&$layout_render_array, $context, &$variables) {
+
+  // get region list
+  $layout = $variables['layout'];
+  $regions = $layout->getRegions();
+
+  // Check for empty regions and provide info to template
+  if($regions) {
+    foreach($regions as $region => $region_name) {
+      $region_empty = true;
+      if (isset($variables['content'][$region])) {
+        foreach($variables['content'][$region] as $field) {
+          if(isset($field[0])) {
+            $region_empty = false;
+          }
+        }
+      }
+      $variables[$region . '_empty'] = $region_empty;
+    }
+  }
+
+  // Re-enable THEMENAME_preprocess_paragraph()
+  $active_theme = \Drupal::theme()->getActiveTheme()->getName();
+  $preprocess_functions = array();
+  $preprocess_functions[] = 'calibr8_theme' . '_preprocess_' . $context['entity_type'];
+  $preprocess_functions[] = $active_theme . '_preprocess_' . $context['entity_type'];
+  foreach($preprocess_functions as $preprocess_function) {
+    if (function_exists($preprocess_function)) {
+      $preprocess_function($variables);
+    }
+  }
+
+}
+
+

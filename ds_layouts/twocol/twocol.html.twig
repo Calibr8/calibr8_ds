@@ -1,0 +1,68 @@
+{#
+/**
+ * @file
+ * Display Suite 2 column template.
+ *
+ * Available variables:
+ * - outer_wrapper: outer wrapper element
+ * - left_wrapper: wrapper element around left region
+ * - right_wrapper: wrapper element around right region
+ * - attributes: layout attributes
+ * - left_attributes: attributes for left region
+ * - right_attributes: attributes for right region
+ * - left: content of left region
+ * - right: content of right region
+ */
+#}
+<{{ outer_wrapper }}{{ attributes.addClass('layout--twocol', 'clearfix') }}>
+  {{ title_suffix.contextual_links }}
+
+  <div class="inner">
+
+    <div class="row">
+
+    {% if not header_empty %}
+      {% if hide_page_title %}
+        {% set header_without_title = header|without('node_title') %}
+        {% if header_without_title is not empty %}
+          <{{ header_wrapper }}{{ header_attributes.addClass('ds-header', 'col', 'no-title') }}>
+              {{ header_without_title }}
+          </{{ header_wrapper }}>
+        {% endif %}
+      {% else %}
+        <{{ header_wrapper }}{{ header_attributes.addClass('ds-header', 'col') }}>
+          {{ header }}
+        </{{ header_wrapper }}>
+      {% endif %}
+    {% endif %}
+
+    <div class="ds-content col">
+      <div class="row">
+    {% if not column_1_empty and not column_2_empty  %}
+      <{{ column_1_wrapper }}{{ column_1_attributes.addClass('column-1 col col-md-6') }}>
+        {{ column_1 }}
+      </{{ column_1_wrapper }}>
+      <{{ column_2_wrapper }}{{ column_2_attributes.addClass('column-2 col col-md-6') }}>
+        {{ column_2 }}
+      </{{ column_2_wrapper }}>
+    {% elseif not column_1_empty %}
+      <{{ column_1_wrapper }}{{ column_1_attributes.addClass('column-1 col') }}>
+        {{ column_1 }}
+      </{{ column_1_wrapper }}>
+    {% elseif not column_2_empty %}
+      <{{ column_2_wrapper }}{{ column_2_attributes.addClass('column-2 col') }}>
+        {{ column_2 }}
+      </{{ column_2_wrapper }}>
+    {% endif %}
+      </div>
+    </div>
+
+    {% if not footer_empty %}
+    <{{ footer_wrapper }}{{ footer_attributes.addClass('ds-footer', 'col') }}>
+      {{ footer }}
+    </{{ footer_wrapper }}>
+    {% endif %}
+
+    </div>
+  </div>
+</{{ outer_wrapper }}>

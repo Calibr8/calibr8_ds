@@ -1,0 +1,9 @@
+name: Calibr8 Display Suite
+description: Display Suite extensions.
+package: Calibr8
+
+type: module
+core: 8.x
+
+dependencies:
+  - ds

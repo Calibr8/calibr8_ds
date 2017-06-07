@@ -1,0 +1,34 @@
+{#
+/**
+ * @file
+ * Display Suite 2 column template.
+ *
+ * Available variables:
+ * - outer_wrapper: outer wrapper element
+ * - attributes: layout attributes
+ * - column_1_attributes: attributes for column_1 region
+ * - column_1: content of column_1 region
+ */
+#}
+<{{ outer_wrapper }}{{ attributes.addClass('layout--reset', 'clearfix') }}>
+  {{ title_suffix.contextual_links }}
+
+  <div class="inner">
+
+  {% if not column_1_empty %}
+    {% if hide_page_title %}
+      {% set column_1_without_title = column_1|without('node_title') %}
+      {% if column_1_without_title is not empty %}
+        <{{ column_1_wrapper }}{{ column_1_attributes.addClass('ds-content').addClass('no-title') }}>
+            {{ column_1_without_title }}
+        </{{ column_1_wrapper }}>
+      {% endif %}
+    {% else %}
+      <{{ column_1_wrapper }}{{ column_1_attributes.addClass('ds-content') }}>
+        {{ column_1 }}
+      </{{ column_1_wrapper }}>
+    {% endif %}
+  {% endif %}
+
+  </div>
+</{{ outer_wrapper }}>
