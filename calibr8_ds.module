@@ -15,8 +15,10 @@ function calibr8_ds_ds_pre_render_alter(&$layout_render_array, $context, &$varia
       $region_empty = true;
       if (isset($variables['content'][$region])) {
         foreach($variables['content'][$region] as $field) {
-          if(isset($field[0])) {
+          $empty_field = _calibr8_ds_check_empty_fields($field);
+          if(!$empty_field) {
             $region_empty = false;
+            break;
           }
         }
       }
@@ -37,4 +39,19 @@ function calibr8_ds_ds_pre_render_alter(&$layout_render_array, $context, &$varia
 
 }
 
-
+function _calibr8_ds_check_empty_fields($field) {
+  if(isset($field['#group_name'])) {
+    // Not field but field group; recursively check nested fields
+    foreach($field as $subfield) {
+      $empty_field = _calibr8_ds_check_empty_fields($subfield);
+      if(!$empty_field) {
+        return false;
+      }
+    }
+  }
+  // Regular field
+  else if(isset($field[0])) {
+    return false;
+  }
+  return true;
+}
