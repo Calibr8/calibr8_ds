@@ -9,7 +9,7 @@ reset:
     column_1:
       label: Center
 onecol:
-  label    : Columns: 1
+  label    : 'Columns: 1'
   category : Calibr8
   class: '\Drupal\ds\Plugin\DsLayout'
   type: partial
@@ -23,7 +23,7 @@ onecol:
     footer:
       label: Footer
 onecol_image:
-  label    : Columns: 1 with image
+  label    : 'Columns: 1 with image'
   category : Calibr8
   class: '\Drupal\ds\Plugin\DsLayout'
   type: partial
@@ -39,7 +39,7 @@ onecol_image:
     footer:
       label: Footer
 twocol:
-  label    : Columns: 2
+  label    : 'Columns: 2'
   category : Calibr8
   class: '\Drupal\ds\Plugin\DsLayout'
   type: partial
@@ -55,7 +55,7 @@ twocol:
     footer:
       label: Footer
 twocol_reverse:
-  label    : Columns: 2 reverse
+  label    : 'Columns: 2 reverse'
   category : Calibr8
   class: '\Drupal\ds\Plugin\DsLayout'
   type: partial
