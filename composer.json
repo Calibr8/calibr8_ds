@@ -3,7 +3,7 @@
     "description": "Custom module with ds layouts for calibrate",
     "type": "drupal-custom",
     "keywords": ["Drupal 8","Display Suite","Feature"],
-    "homepage": "https://github.com/stevenvdhout/calibr8_ds",
+    "homepage": "https://github.com/Calibr8/calibr8_ds",
     "license": "GPL-2.0+",
     "authors": [
         {
